@@ -2,52 +2,42 @@
 {% load static %}
 {% block title %}BookStore{% endblock %}
 {% block content %}
-
-
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-3">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator,
-          etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Make an account</a>
-        </p>
-      </div>
+  <div class="container">
+    
+    <!-- Welcome Message -->
+    <div class="welcome-message my-4">
+      <h3>Welcome to Our Store!</h3>
+      <p>Dear Valued Customers,</p>
+      <p>We hope this message finds you well! At Here, we are committed to providing you with the best shopping experience possible. Explore our wide range of products tailored just for you!</p>
+      <p><strong>🌟 Stay Informed:</strong> For the latest updates on our stores, website, and customer support, <a href="#" class="text-decoration-underline">click here</a>. We appreciate your continued support and patience.</p>
     </div>
-  </section>
 
-  <div class="album py-5 bg-light">
     <div class="container">
-
-      <div class="pb-3 h5">All Books</div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-
-        {% for product in products %}
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
-            <div class="card-body">
-              <p class="card-text">
-                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">9min read</small>
+      <div class="row">
+        <div class="album py-5">
+          <div class="pb-3">
+            <h1 class="h3">Popular</h1>
+          </div>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            {% for product in products %}
+            <div class="col">
+              <div class="card border-0">
+                <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
+                <div class="card-body px-0">
+                  <p class="card-text">
+                    <a class="text-dark text-decoration-none"
+                      href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                  </p>
+                  <div class="fw-bold">£{{ product.price }}</div>
+                </div>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
-
-        {% endfor %}
-
       </div>
     </div>
   </div>
-
-
 </main>
-
 {% endblock %}
